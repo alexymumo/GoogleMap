@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "986709831495",
+    "project_id": "carapp-aeba1",
+    "storage_bucket": "carapp-aeba1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986709831495:android:b08724dc3d016fa932a662",
+        "android_client_info": {
+          "package_name": "com.alexmumo.car"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986709831495-njnmj98qmrptt80atmj3dpnh265c9cm3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFYu4ZYYJ3eivNkRW2XCkvXMzfRmgq7xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986709831495-njnmj98qmrptt80atmj3dpnh265c9cm3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
