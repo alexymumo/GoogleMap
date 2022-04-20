@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Car</string>
-    
+    <string name="app_name">Crime Report</string>
+
     <string name="title_activity_maps">Maps</string>
     <string name="satellite">Satellite</string>
     <string name="normal">Normal</string>
@@ -9,4 +9,6 @@
     <string name="dropped_pin">Dropped Pin</string>
     <string name="poi">poi</string>
     <string name="start">Start</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
