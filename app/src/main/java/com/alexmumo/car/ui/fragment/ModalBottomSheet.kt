@@ -4,12 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.alexmumo.car.R
 import com.alexmumo.car.databinding.FragmentModalBottomSheetListDialogBinding
-import com.alexmumo.car.databinding.FragmentModalBottomSheetListDialogItemBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
