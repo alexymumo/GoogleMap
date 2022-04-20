@@ -1,9 +1,14 @@
 package com.alexmumo.car
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.alexmumo.car.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.* // ktlint-disable no-wildcard-imports
 import com.google.android.gms.maps.model.LatLng
@@ -12,14 +17,14 @@ import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    private val REQUEST_LOCATION_PERMISSION = 1
+
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-    val latitude = -1.6118365
-    val longitude = 37.4812825
-    val homeLatLng = LatLng(latitude, longitude)
-    val zoomLevel = 15f
-
-    val sydney = LatLng(-1.6118365, 37.4812825)
+    private val latitude = -1.6118365
+    private val longitude = 37.4812825
+    private val homeLatLng = LatLng(latitude, longitude)
+    private val zoomLevel = 15f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +46,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(homeLatLng))
 
         setOnMapLongClick(googleMap)
+
+        setPoiClick(googleMap)
+
+        enableLocation()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -70,6 +79,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         else -> super.onOptionsItemSelected(item)
     }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == REQUEST_LOCATION_PERMISSION) {
+            if (grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
+                enableLocation()
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
     private fun setOnMapLongClick(map: GoogleMap) {
         map.setOnMapLongClickListener { latLng ->
             val snippet = String.format(
@@ -84,7 +106,33 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     .title(getString(R.string.dropped_pin))
                     .snippet(snippet)
             )
-
+        }
+    }
+    private fun setPoiClick(map: GoogleMap) {
+        map.setOnPoiClickListener { poi ->
+            val poiMarker = map.addMarker(
+                MarkerOptions()
+                    .position(poi.latLng)
+                    .title(poi.name)
+            )
+            poiMarker?.showInfoWindow()
+        }
+    }
+    private fun isPermissionGranted(): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this, Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+    @SuppressLint("MissingPermission")
+    private fun enableLocation() {
+        if (isPermissionGranted()) {
+            mMap.isMyLocationEnabled = true
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_LOCATION_PERMISSION
+            )
         }
     }
 }

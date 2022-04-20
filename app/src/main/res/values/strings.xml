@@ -8,4 +8,5 @@
     <string name="terrain">Terrain</string>
     <string name="dropped_pin">Dropped Pin</string>
     <string name="poi">poi</string>
+    <string name="start">Start</string>
 </resources>
