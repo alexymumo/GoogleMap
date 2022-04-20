@@ -14,4 +14,8 @@
         android:id="@+id/satellite_map"
         android:title="@string/satellite"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/terrain_map"
+        android:title="@string/terrain"
+        app:showAsAction="never"/>
 </menu>
