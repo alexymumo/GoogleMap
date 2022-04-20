@@ -8,11 +8,17 @@ import com.alexmumo.car.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.* // ktlint-disable no-wildcard-imports
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    val latitude = -1.6118365
+    val longitude = 37.4812825
+    val homeLatLng = LatLng(latitude, longitude)
+    val zoomLevel = 15f
+
     val sydney = LatLng(-1.6118365, 37.4812825)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,19 +36,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Adds a marker to the coordinates
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(homeLatLng, zoomLevel))
 
-        mMap.setMinZoomPreference(6.0f)
-        mMap.setMaxZoomPreference(14f)
+        mMap.addMarker(MarkerOptions().position(homeLatLng))
 
-        // centers the map at LatLng coordinates
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        setOnMapLongClick(googleMap)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
+
         inflater.inflate(R.menu.map_options, menu)
+
         return true
     }
 
@@ -60,8 +65,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             true
         }
         R.id.terrain_map -> {
-            mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN true
+            mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
+            true
         }
         else -> super.onOptionsItemSelected(item)
+    }
+    private fun setOnMapLongClick(map: GoogleMap) {
+        map.setOnMapLongClickListener { latLng ->
+            val snippet = String.format(
+                Locale.getDefault(),
+                "Lat: %1$.5f, Long: %2$.5f",
+                latLng.latitude,
+                latLng.longitude
+            )
+            map.addMarker(
+                MarkerOptions()
+                    .position(latLng)
+                    .title(getString(R.string.dropped_pin))
+                    .snippet(snippet)
+            )
+
+        }
     }
 }
