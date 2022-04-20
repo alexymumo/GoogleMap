@@ -29,7 +29,6 @@ class AuthRepository {
         return withContext(Dispatchers.IO) {
             val results = firebaseAuth.signInWithEmailAndPassword(email, password).await()
             Resource.Success(results)
-
         }
     }
 }
