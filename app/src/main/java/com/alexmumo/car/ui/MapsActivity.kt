@@ -1,4 +1,4 @@
-package com.alexmumo.car
+package com.alexmumo.car.ui
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -9,6 +9,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.alexmumo.car.R
 import com.alexmumo.car.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.* // ktlint-disable no-wildcard-imports
 import com.google.android.gms.maps.model.LatLng
