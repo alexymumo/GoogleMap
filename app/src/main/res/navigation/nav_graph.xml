@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.alexmumo.car.ui.fragment.splash.SplashFragment"
-        android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_registerFragment"
@@ -20,9 +19,18 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.alexmumo.car.ui.fragment.auth.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="Login">
+        <action
+            android:id="@+id/action_loginFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.alexmumo.car.ui.fragment.auth.RegisterFragment"
-        android:label="RegisterFragment" />
+        android:label="Register" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.alexmumo.car.ui.fragment.main.MapsFragment"
+        android:label="Locations"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

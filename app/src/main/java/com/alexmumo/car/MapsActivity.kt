@@ -3,7 +3,6 @@ package com.alexmumo.car
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -140,16 +139,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
     private fun setUpPolyLines(map: GoogleMap) {
-        val polyline = map.addPolyline(PolylineOptions()
-            .clickable(true)
-            .add(
-                LatLng(-35.016, 143.321),
-                LatLng(-34.747, 145.592),
-                LatLng(-34.364, 147.891),
-                LatLng(-33.501, 150.217),
-                LatLng(-32.306, 149.248),
-                LatLng(-32.491, 147.309)
-            )
+        val polyline = map.addPolyline(
+            PolylineOptions()
+                .clickable(true)
+                .add(
+                    LatLng(-35.016, 143.321),
+                    LatLng(-34.747, 145.592),
+                    LatLng(-34.364, 147.891),
+                    LatLng(-33.501, 150.217),
+                    LatLng(-32.306, 149.248),
+                    LatLng(-32.491, 147.309)
+                )
         )
     }
 }
