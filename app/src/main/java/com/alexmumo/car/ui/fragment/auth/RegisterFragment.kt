@@ -24,32 +24,37 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding = FragmentRegisterBinding.inflate(layoutInflater, container, false)
-        registerUser()
-        binding.firstnameText.editableText?.toString()
-        binding.passwordText.editableText?.toString()
-        binding.textEmail.editableText?.toString()
+        registerUsers()
+        binding.registerbtn.setOnClickListener {
+            viewModel.registerUser(
+                binding.firstnameLayout.editText?.text.toString(),
+                binding.registerPasswordLayout.editText?.text.toString(),
+                binding.registerEmailLayout.editText?.text.toString()
+            )
+        }
         binding.textRegister.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
         return binding.root
     }
 
-    private fun registerUser() {
-        viewModel.register.observe(viewLifecycleOwner, EventObserver(
-            onError = {
+    private fun registerUsers() {
+        viewModel.register.observe(
+            viewLifecycleOwner,
+            EventObserver(
+                onError = {
+                    binding.progressBar.isVisible = false
+                },
+                onLoading = {
+                    binding.progressBar.isVisible = true
+                }
+
+            ) {
                 binding.progressBar.isVisible = false
-            },
-            onLoading = {
-                binding.progressBar.isVisible = true
+                Toast.makeText(requireContext(), "Register", Toast.LENGTH_LONG).show()
             }
-
-        ){
-            binding.progressBar.isVisible = false
-            Toast.makeText(requireContext(), "Register", Toast.LENGTH_LONG).show()
-        }
         )
-
     }
 }

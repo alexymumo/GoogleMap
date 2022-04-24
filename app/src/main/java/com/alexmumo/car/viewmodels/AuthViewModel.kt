@@ -18,8 +18,8 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
     private val _register = MutableLiveData<Event<Resource<AuthResult>>>()
     val register: LiveData<Event<Resource<AuthResult>>> = _register
 
-    fun registerUser(name: String, phone: String, password: String, email: String) {
-        var error = if (name.isEmpty() || phone.isEmpty() || password.isEmpty() || email.isEmpty()) {
+    fun registerUser(name: String,password: String, email: String) {
+        val error = if (name.isEmpty() || password.isEmpty() || email.isEmpty()) {
             "Cannot be empty"
         } else null
         error?.let {
