@@ -24,8 +24,10 @@ class MapsFragment : Fragment() {
     private val REQUEST_LOCATION_PERMISSION = 1
 
     private val callback = OnMapReadyCallback { googleMap ->
-        val latitude = -34.0
-        val longitude = 151.0
+        map = googleMap
+
+        val latitude = -1.1353041
+        val longitude = 36.9443908
         val zoomLevel = 15f
         val homeLatLng = LatLng(latitude, longitude)
         googleMap.addMarker(MarkerOptions().position(homeLatLng))
