@@ -16,10 +16,14 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 
-class MapsFragment : Fragment() {
+// ktlint-disable no-wildcard-imports
+
+class MapsFragment :
+    Fragment(),
+    GoogleMap.OnPolylineClickListener,
+    GoogleMap.OnPolygonClickListener {
     private lateinit var map: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
 
@@ -29,9 +33,21 @@ class MapsFragment : Fragment() {
         val latitude = -1.1353041
         val longitude = 36.9443908
         val zoomLevel = 15f
+        val polyline = googleMap.addPolyline(
+            PolylineOptions()
+                .clickable(true)
+                .add(
+                    LatLng(-1.1353041, 36.9443908),
+                    LatLng(-1.3028618, 36.7069651)
+                )
+        )
+        polyline.tag = "A"
+        polyline.endCap = RoundCap()
+        polyline.jointType = JointType.DEFAULT
         val homeLatLng = LatLng(latitude, longitude)
         googleMap.addMarker(MarkerOptions().position(homeLatLng))
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(homeLatLng, zoomLevel))
+
         enableLocation()
     }
 
@@ -87,5 +103,13 @@ class MapsFragment : Fragment() {
                 enableLocation()
             }
         }
+    }
+
+    override fun onPolylineClick(p0: Polyline) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPolygonClick(p0: Polygon) {
+        TODO("Not yet implemented")
     }
 }
