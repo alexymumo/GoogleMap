@@ -31,7 +31,8 @@ class RegisterFragment : Fragment() {
             viewModel.registerUser(
                 binding.firstnameLayout.editText?.text.toString(),
                 binding.registerPasswordLayout.editText?.text.toString(),
-                binding.registerEmailLayout.editText?.text.toString()
+                binding.registerEmailLayout.editText?.text.toString(),
+                binding.registerPhoneLayout.editText?.text.toString()
             )
         }
         binding.textRegister.setOnClickListener {
