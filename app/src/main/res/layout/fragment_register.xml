@@ -19,6 +19,7 @@
     <TextView
         android:text="@string/name"
         android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-black"
         android:layout_marginStart="20dp"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
@@ -36,6 +37,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/firstname_text"
             android:textSize="16sp"
+            android:drawableTint="@color/black"
             android:drawableStart="@drawable/ic_person"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -44,6 +46,7 @@
     <TextView
         android:text="@string/email"
         android:textSize="16sp"
+        android:fontFamily="sans-serif-black"
         android:layout_marginTop="5dp"
         android:textColor="@color/black"
         android:layout_marginStart="20dp"
@@ -61,16 +64,18 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_email"
             android:textSize="16sp"
+            android:drawableTint="@color/black"
             android:drawableStart="@drawable/ic_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:text="@string/email"
+        android:text="@string/phone"
         android:textSize="16sp"
         android:layout_marginTop="5dp"
         android:textColor="@color/black"
+        android:fontFamily="sans-serif-black"
         android:layout_marginStart="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -86,6 +91,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_phone"
             android:textSize="16sp"
+            android:drawableTint="@color/black"
             android:drawableStart="@drawable/ic_phone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -93,8 +99,9 @@
 
 
     <TextView
-        android:text="Phone"
+        android:text="@string/phone"
         android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-black"
         android:layout_marginStart="20dp"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
@@ -111,6 +118,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_text"
+            android:drawableTint="@color/black"
             android:drawableStart="@drawable/ic_person"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -121,6 +129,7 @@
         android:text="@string/forgot_password"
         android:layout_marginStart="20dp"
         android:textColor="@color/black"
+        android:fontFamily="sans-serif-black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -134,6 +143,7 @@
         android:id="@+id/text_register"
         android:textAllCaps="false"
         android:textColor="@color/black"
+        android:fontFamily="sans-serif-black"
         android:layout_gravity="center"
         android:text="@string/need_an_account_register"
         android:layout_width="wrap_content"
