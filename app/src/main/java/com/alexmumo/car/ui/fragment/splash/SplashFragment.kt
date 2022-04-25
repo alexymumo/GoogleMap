@@ -22,7 +22,7 @@ class SplashFragment : Fragment() {
     ): View {
         binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
         viewModel.splash.observe(viewLifecycleOwner) {
-            findNavController().navigate(R.id.action_splashFragment_to_mapsFragment)
+            findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
         }
         viewModel.setUp()
         return binding.root
