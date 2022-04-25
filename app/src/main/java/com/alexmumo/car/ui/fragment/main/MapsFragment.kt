@@ -26,7 +26,6 @@ class MapsFragment :
     GoogleMap.OnPolygonClickListener {
     private lateinit var map: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
-
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
 
@@ -38,8 +37,10 @@ class MapsFragment :
                 .clickable(true)
                 .add(
                     LatLng(-1.1353041, 36.9443908),
-                    LatLng(-1.3028618, 36.7069651)
-                )
+                    LatLng(-1.3028618, 36.7069651),
+                    LatLng(-1.5128474, 37.2369496),
+                    LatLng(-1.2711339, 37.3028753)
+                ),
         )
         polyline.tag = "A"
         polyline.endCap = RoundCap()
@@ -67,8 +68,7 @@ class MapsFragment :
 
     private fun checkPermission(): Boolean {
         return ContextCompat.checkSelfPermission(
-            requireContext(), ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED
+            requireContext(), ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun enableLocation() {
