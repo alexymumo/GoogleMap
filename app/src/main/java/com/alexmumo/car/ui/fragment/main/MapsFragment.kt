@@ -4,6 +4,7 @@ import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.Activity
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,8 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+
+// ktlint-disable no-wildcard-imports
 
 // ktlint-disable no-wildcard-imports
 
@@ -34,6 +37,8 @@ class MapsFragment :
         val zoomLevel = 15f
         val polyline = googleMap.addPolyline(
             PolylineOptions()
+                .color(Color.GRAY)
+                .width(5f)
                 .clickable(true)
                 .add(
                     LatLng(-1.1353041, 36.9443908),
@@ -68,7 +73,8 @@ class MapsFragment :
 
     private fun checkPermission(): Boolean {
         return ContextCompat.checkSelfPermission(
-            requireContext(), ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+            requireContext(), ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun enableLocation() {

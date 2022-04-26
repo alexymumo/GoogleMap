@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.alexmumo.car.R
 import com.alexmumo.car.databinding.FragmentLoginBinding
 import com.alexmumo.car.util.EventObserver
-import com.alexmumo.car.util.Resource
 import com.alexmumo.car.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,23 +34,25 @@ class LoginFragment : Fragment() {
         binding.textRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
+        binding.forgotTextview.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_passwordResetFragment)
+        }
         return binding.root
     }
 
     private fun signInUser() {
         viewModel.login.observe(
             viewLifecycleOwner,
-            EventObserver (
+            EventObserver(
                 onError = {
                     binding.progressBar.isVisible = false
                 },
                 onLoading = {
                     binding.progressBar.isVisible = true
                 }
-            ){
+            ) {
                 binding.progressBar.isVisible = false
                 findNavController().navigate(R.id.action_loginFragment_to_mapsFragment)
-
             }
         )
     }

@@ -20,4 +20,6 @@
     <string name="rx">Rx</string>
     <string name="google_api">AIzaSyAiP8S1tnPet7aSy7m9QLbeZ2aiA-7MmYI</string>
     <string name="phone">Phone</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
