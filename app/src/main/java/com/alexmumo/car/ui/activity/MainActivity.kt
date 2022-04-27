@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -29,7 +30,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.registerFragment,
                 R.id.loginFragment,
                 R.id.homeFragment
-            ), binding.drawer
+            ),
+            binding.drawer
         )
         NavigationUI.setupActionBarWithNavController(this, navController, binding.drawer)
         NavigationUI.setupWithNavController(binding.navigationView, navController)
