@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, binding.drawer)
         NavigationUI.setupWithNavController(binding.navigationView, navController)
     }
-    // When up button is pressed
+    // up button is pressed
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(
             navController,
