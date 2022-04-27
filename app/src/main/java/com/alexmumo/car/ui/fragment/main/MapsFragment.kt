@@ -18,11 +18,12 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import dagger.hilt.android.AndroidEntryPoint
 
 // ktlint-disable no-wildcard-imports
 
 // ktlint-disable no-wildcard-imports
-
+@AndroidEntryPoint
 class MapsFragment :
     Fragment(),
     GoogleMap.OnPolylineClickListener,
