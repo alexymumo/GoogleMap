@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.alexmumo.car.R
 import com.alexmumo.car.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,5 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         val navNavHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navNavHostFragment.findNavController()
+        binding.bottomNav.setupWithNavController(navController)
     }
 }
