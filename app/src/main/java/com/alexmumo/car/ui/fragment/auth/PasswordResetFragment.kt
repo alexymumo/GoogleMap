@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.alexmumo.car.R
+import com.alexmumo.car.databinding.FragmentPasswordResetBinding
 
 class PasswordResetFragment : Fragment() {
+    private lateinit var binding: FragmentPasswordResetBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.fragment_password_reset, container, false)
+    ): View {
+        binding = FragmentPasswordResetBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 }
