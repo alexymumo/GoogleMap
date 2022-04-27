@@ -50,7 +50,7 @@
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.alexmumo.car.ui.fragment.main.MapsFragment"
-        android:label="Locations"
+        android:label="Location"
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/passwordResetFragment"
@@ -60,7 +60,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.alexmumo.car.ui.fragment.main.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
@@ -72,6 +72,6 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.alexmumo.car.ui.fragment.main.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="Settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>
