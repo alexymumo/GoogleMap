@@ -37,7 +37,7 @@ class MapsFragment :
         val zoomLevel = 15f
         val polyline = googleMap.addPolyline(
             PolylineOptions()
-                .color(Color.GRAY)
+                .color(Color.GREEN)
                 .width(5f)
                 .clickable(true)
                 .add(

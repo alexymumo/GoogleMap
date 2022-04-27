@@ -37,9 +37,9 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
         }
     }
     fun signInUser(email: String, password: String) {
-        var error = if (email.isEmpty()||password.isEmpty()) {
+        val error = if (email.isEmpty() || password.isEmpty()) {
             "Cannot be empty"
-        }else null
+        } else null
         error?.let {
             _login.postValue(Event(Resource.Error(it)))
             return
