@@ -2,16 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
-        android:title="Home"
+        android:id="@+id/homeFragment"
+        android:title="@string/home"
         android:icon="@drawable/ic_email"/>
     <item
-        android:id="@+id/logout"
-        android:title="Logout"
+        android:id="@+id/loginFragment"
+        android:title="@string/logout"
         android:icon="@drawable/ic_email"/>
     <item
-        android:id="@+id/register"
-        android:title="Register"
+        android:id="@+id/registerFragment"
+        android:title="@string/register"
         android:icon="@drawable/ic_email"/>
-
 </menu>
