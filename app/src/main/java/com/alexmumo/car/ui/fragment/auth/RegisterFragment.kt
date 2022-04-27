@@ -38,6 +38,9 @@ class RegisterFragment : Fragment() {
         binding.textRegister.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
+        binding.forgotTextview.setOnClickListener {
+
+        }
         return binding.root
     }
 

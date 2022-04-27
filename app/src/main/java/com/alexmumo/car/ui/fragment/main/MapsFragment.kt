@@ -19,6 +19,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.* // ktlint-disable no-wildcard-imports
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.jar.Manifest
 
 // ktlint-disable no-wildcard-imports
 
@@ -93,7 +94,11 @@ class MapsFragment :
             map.isMyLocationEnabled = true
         } else {
             ActivityCompat.requestPermissions(
-                requireContext() as Activity, arrayOf(ACCESS_FINE_LOCATION),
+                requireActivity(),
+                arrayOf(
+                    ACCESS_COARSE_LOCATION,
+                    ACCESS_FINE_LOCATION
+               ),
                 REQUEST_LOCATION_PERMISSION
             )
         }
