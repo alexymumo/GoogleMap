@@ -1,6 +1,7 @@
 package com.alexmumo.car.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -35,6 +36,13 @@ class MainActivity : AppCompatActivity() {
         )
         NavigationUI.setupActionBarWithNavController(this, navController, binding.drawer)
         NavigationUI.setupWithNavController(binding.navigationView, navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            binding.bottomNav.visibility = if (destination.id == R.id.splashFragment || destination.id == R.id.loginFragment || destination.id == R.id.registerFragment) {
+                View.GONE
+            } else {
+                View.VISIBLE
+            }
+        }
     }
     // up button is pressed
     override fun onSupportNavigateUp(): Boolean {

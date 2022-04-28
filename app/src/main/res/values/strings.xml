@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Crime Report</string>
+    <string name="app_name">Crime Report App</string>
 
     <string name="title_activity_maps">Maps</string>
     <string name="satellite">Satellite</string>
