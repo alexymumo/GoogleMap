@@ -1,8 +1,6 @@
 package com.alexmumo.car.ui.fragment.splash
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,19 +21,14 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
-        Handler(Looper.getMainLooper()).postDelayed({
-            viewModel.splash.observe(viewLifecycleOwner) { user ->
-                if (user == null) {
-                    findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-                } else {
-                    findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
-                }
+        viewModel.splash.observe(viewLifecycleOwner) { user ->
+            if (user == null) {
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+            } else {
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
             }
-        }, 3000)
-        // viewModel.splash.observe(viewLifecycleOwner) {
-        //  findNavController().navigate(R.id.action_splashFragment_to_mapsFragment)
-        // }
-        // viewModel.setUp()
+        }
+        viewModel.setUp()
         return binding.root
     }
 }
