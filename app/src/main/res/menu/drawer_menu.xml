@@ -31,8 +31,7 @@
         </item>
 
         <item
-            android:title="@string/others"
-            >
+            android:title="@string/others">
             <menu>
                 <item
                     android:id="@+id/settingsFragment"

@@ -4,14 +4,17 @@
     <item
         android:id="@+id/homeFragment"
         android:title="@string/home"
+        android:enabled="true"
         android:icon="@drawable/ic_home"/>
     <item
         android:id="@+id/mapsFragment"
         android:title="@string/location"
+        android:enabled="true"
         android:icon="@drawable/ic_location"/>
 
     <item
         android:id="@+id/settingsFragment"
         android:title="@string/settings"
+        android:enabled="true"
         android:icon="@drawable/ic_settings"/>
 </menu>

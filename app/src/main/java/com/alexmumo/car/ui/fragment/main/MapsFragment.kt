@@ -2,7 +2,6 @@ package com.alexmumo.car.ui.fragment.main
 
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.app.Activity
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
@@ -19,7 +18,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.* // ktlint-disable no-wildcard-imports
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.jar.Manifest
 
 // ktlint-disable no-wildcard-imports
 
@@ -30,7 +28,7 @@ class MapsFragment :
     GoogleMap.OnPolylineClickListener,
     GoogleMap.OnPolygonClickListener {
     private lateinit var map: GoogleMap
-    private val REQUEST_LOCATION_PERMISSION = 1
+    private val LOCATION = 1
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
 
@@ -98,8 +96,8 @@ class MapsFragment :
                 arrayOf(
                     ACCESS_COARSE_LOCATION,
                     ACCESS_FINE_LOCATION
-               ),
-                REQUEST_LOCATION_PERMISSION
+                ),
+                LOCATION
             )
         }
     }
@@ -110,7 +108,7 @@ class MapsFragment :
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_LOCATION_PERMISSION) {
+        if (requestCode == LOCATION) {
             if (grantResults.isNotEmpty() && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 enableLocation()
             }
