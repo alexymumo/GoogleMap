@@ -1,9 +1,6 @@
 package com.alexmumo.car.ui.fragment.main
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,18 +18,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
-
-        binding.button.setOnClickListener {
-            takePicture()
-        }
         return binding.root
-    }
-
-    private fun takePicture() {
-        val takePicture = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        try {
-            startActivityForResult(takePicture, REQUEST_IMAGE_CAPTURE)
-        } catch (e: ActivityNotFoundException) {
-        }
     }
 }
