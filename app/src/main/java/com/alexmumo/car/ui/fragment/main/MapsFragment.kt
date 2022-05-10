@@ -2,8 +2,8 @@ package com.alexmumo.car.ui.fragment.main
 
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.app.Activity
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,16 +16,19 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.* // ktlint-disable no-wildcard-imports
+import dagger.hilt.android.AndroidEntryPoint
 
 // ktlint-disable no-wildcard-imports
 
+// ktlint-disable no-wildcard-imports
+@AndroidEntryPoint
 class MapsFragment :
     Fragment(),
     GoogleMap.OnPolylineClickListener,
     GoogleMap.OnPolygonClickListener {
     private lateinit var map: GoogleMap
-    private val REQUEST_LOCATION_PERMISSION = 1
+    private val LOCATION = 1
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
 
@@ -34,6 +37,8 @@ class MapsFragment :
         val zoomLevel = 15f
         val polyline = googleMap.addPolyline(
             PolylineOptions()
+                .color(Color.GREEN)
+                .width(5f)
                 .clickable(true)
                 .add(
                     LatLng(-1.1353041, 36.9443908),
@@ -68,7 +73,8 @@ class MapsFragment :
 
     private fun checkPermission(): Boolean {
         return ContextCompat.checkSelfPermission(
-            requireContext(), ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+            requireContext(), ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun enableLocation() {
@@ -86,8 +92,12 @@ class MapsFragment :
             map.isMyLocationEnabled = true
         } else {
             ActivityCompat.requestPermissions(
-                requireContext() as Activity, arrayOf(ACCESS_FINE_LOCATION),
-                REQUEST_LOCATION_PERMISSION
+                requireActivity(),
+                arrayOf(
+                    ACCESS_COARSE_LOCATION,
+                    ACCESS_FINE_LOCATION
+                ),
+                LOCATION
             )
         }
     }
@@ -98,7 +108,7 @@ class MapsFragment :
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_LOCATION_PERMISSION) {
+        if (requestCode == LOCATION) {
             if (grantResults.isNotEmpty() && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 enableLocation()
             }
