@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.alexmumo.car.R
 import com.alexmumo.car.databinding.FragmentMapsBinding
+import com.google.android.gms.location.GeofencingClient
 import com.google.android.gms.maps.* // ktlint-disable no-wildcard-imports
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
     private lateinit var binding: FragmentMapsBinding
+    private lateinit var geoclient: GeofencingClient
 
     override fun onCreateView(
         inflater: LayoutInflater,
