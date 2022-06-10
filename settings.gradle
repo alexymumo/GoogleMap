@@ -13,4 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Car"
-include ':app'
+include ':presentation'
+include ':data'

@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import com.alexmumo.car.R
 import com.alexmumo.car.databinding.FragmentMapsBinding
 import com.google.android.gms.location.GeofencingClient
-import com.google.android.gms.maps.* // ktlint-disable no-wildcard-imports
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -39,15 +42,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(15f))
         googleMap.isTrafficEnabled = true
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(this) // getMapAsync used to register callback
+        mapFragment?.getMapAsync(this)
     }
 }
-
-/*
-* OnMapReadyCallBack interface
-* -
-* */
